@@ -43,7 +43,7 @@ def evaluate(exp, env)
     idx = 1
     while child = exp[idx] do
       evaluate(child, env)
-      idx += 1
+      idx = idx + 1
     end
 
   # The second argument of this method, `env`, is an "environement" that
@@ -147,7 +147,7 @@ def evaluate(exp, env)
       idx = 0
       while parameter = parameter_list[idx]
         local_env[parameter] = evaluate(exp[2], env)
-        idx += 1
+        idx = idx + 1
       end
       evaluate(function_body, local_env)
     end
@@ -174,7 +174,7 @@ def evaluate(exp, env)
     array = []
     while item = exp[idx+1]
       array[idx] = evaluate(item, env)
-      idx += 1
+      idx = idx + 1
     end
     array
   
@@ -195,7 +195,7 @@ def evaluate(exp, env)
       key = evaluate(exp[idx], env)
       value =  evaluate(exp[idx+1], env)
       hash[key] = value
-      idx += 2
+      idx = idx + 2
     end
     hash
 
