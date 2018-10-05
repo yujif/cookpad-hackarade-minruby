@@ -11,7 +11,7 @@ Dir.glob('test*.rb').sort.each do |f|
   else
     correct = `ruby #{f}`
   end
-  answer = `ruby #{MY_PROGRAM} #{f}`
+  answer = `RUBY_THREAD_VM_STACK_SIZE=400000000 ruby -rminruby #{MY_PROGRAM} #{MY_PROGRAM} #{MY_PROGRAM} #{f}`
 
   print "#{f} => "
   if correct == answer
