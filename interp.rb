@@ -41,11 +41,13 @@ def evaluate(exp, env, function_definitions)
     # Advice 1: Insert `pp(exp)` and observe the AST first.
     # Advice 2: Apply `evaluate` to each child of this node.
     idx = 1
+    output = nil
     while child = exp[idx] do
-      evaluate(child, env)
+      output = evaluate(child, env, function_definitions)
       idx = idx + 1
     end
-
+    output
+ 
   # The second argument of this method, `env`, is an "environement" that
   # keeps track of the values stored to variables.
   # It is a Hash object whose key is a variable name and whose value is a
