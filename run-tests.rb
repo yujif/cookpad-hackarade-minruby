@@ -5,5 +5,10 @@ Dir.glob('test*.rb').sort.each do |f|
   answer = `ruby #{MY_PROGRAM} #{f}`
 
   puts "#{f} => #{correct == answer ? 'OK!' : 'NG'}"
-  break if correct != answer
+  if correct != answer
+    File.foreach(f){|line|
+      p line.chomp
+    }
+    break
+  end
 end
