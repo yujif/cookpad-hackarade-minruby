@@ -17,13 +17,9 @@ def evaluate(exp, env)
   when "+"
     evaluate(exp[1], env) + evaluate(exp[2], env)
   when "-"
-    # Subtraction.  Please fill in.
-    # Use the code above for addition as a reference.
-    # (Almost just copy-and-paste.  This is an exercise.)
-    raise(NotImplementedError) # Problem 1
+    evaluate(exp[1], env) - evaluate(exp[2], env)
   when "*"
-    raise(NotImplementedError) # Problem 1
-  # ... Implement other operators that you need
+    evaluate(exp[1], env) * evaluate(exp[2], env)
 
   
 #
