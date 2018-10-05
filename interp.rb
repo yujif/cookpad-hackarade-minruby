@@ -117,6 +117,12 @@ def evaluate(exp, env)
         else
           evaluate(exp[2], env)
         end
+      when "require"
+        require(evaluate(exp[2], env))
+      when "minruby_parse"
+        minruby_parse(evaluate(exp[2], env))
+      when "minruby_load"
+        minruby_load()
       else
         raise("unknown builtin function")
       end
