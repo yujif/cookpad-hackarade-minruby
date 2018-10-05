@@ -99,7 +99,7 @@ def evaluate(exp, env, function_definitions)
     # Lookup the function definition by the given function name.
     func = function_definitions[exp[1]]
 
-    if func.nil?
+    if func == nil
       # We couldn't find a user-defined function definition;
       # it should be a builtin function.
       # Dispatch upon the given function name, and do paticular tasks.
