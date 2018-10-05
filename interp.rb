@@ -159,7 +159,7 @@ def evaluate(exp, env, function_definitions)
       local_env = {}
       idx = 0
       while parameter = parameter_list[idx]
-        local_env[parameter] = evaluate(exp[2], env, function_definitions)
+        local_env[parameter] = evaluate(exp[idx+2], env, function_definitions)
         idx = idx + 1
       end
       evaluate(function_body, local_env, function_definitions)
@@ -194,10 +194,10 @@ def evaluate(exp, env, function_definitions)
   when "ary_ref"
     array = evaluate(exp[1], env, function_definitions)
     index = evaluate(exp[2], env, function_definitions)
-    p array[index]
+    array[index]
 
   when "ary_assign"
-    idx = evaluate(exp[2], env)
+    idx = evaluate(exp[2], env, function_definitions)
     array = evaluate(exp[1], env, function_definitions)
     array[idx] = evaluate(exp[3], env, function_definitions)
     
