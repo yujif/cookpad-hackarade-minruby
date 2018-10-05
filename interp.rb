@@ -108,10 +108,15 @@ def evaluate(exp, env)
       when "Integer"
         Integer(evaluate(exp[2], env))
       when "fizzbuzz"
-        return "FizzBuzz" if evaluate(exp[2], env) % 15 == 0
-        return "Fizz" if evaluate(exp[2], env) % 3 == 0
-        return "Buzz" if evaluate(exp[2], env) % 5 == 0
-        return evaluate(exp[2], env)
+        if evaluate(exp[2], env) % 15 == 0
+          "FizzBuzz"
+        elsif evaluate(exp[2], env) % 3 == 0
+          "Fizz"
+        elsif evaluate(exp[2], env) % 5 == 0 
+          "Buzz"
+        else
+          evaluate(exp[2], env)
+        end
       else
         raise("unknown builtin function")
       end
