@@ -139,7 +139,17 @@ def evaluate(exp, env)
       # (*1) formal parameter: a variable as found in the function definition.
       # For example, `a`, `b`, and `c` are the formal parameters of
       # `def foo(a, b, c)`.
-      raise(NotImplementedError) # Problem 5
+      function_name = exp[1]
+      parameter_list = $function_definitions[function_name][0]
+      function_body = $function_definitions[function_name][1]
+
+      local_env = {}
+      idx = 0
+      while parameter = parameter_list[idx]
+        local_env[parameter] = evaluate(exp[2], env)
+        idx += 1
+      end
+      evaluate(function_body, local_env)
     end
 
   when "func_def"
@@ -151,7 +161,7 @@ def evaluate(exp, env)
     # All you need is store them into $function_definitions.
     #
     # Advice: $function_definitions[???] = ???
-    raise(NotImplementedError) # Problem 5
+    $function_definitions[exp[1]] = [exp[2], exp[3]]
 
 
 #
